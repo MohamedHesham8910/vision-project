@@ -2,13 +2,12 @@ import cv2
 import numpy as np
 import random
 
-imagePath = "images/lion.jpeg"
-image = cv2.imread(imagePath)
-
 ####################################################################
 #Functions for Augmentations
 
-def resize(image):
+def resize(dir):
+    imagePath = dir
+    image = cv2.imread(imagePath)
     (h,w) = image.shape[:2]
     aspect = w/h
     
@@ -25,7 +24,9 @@ def resize(image):
     cv2.waitKey(0)
     cv2.destroyAllWindows()
 
-def translate(image):
+def translate(dir):
+    imagePath = dir
+    image = cv2.imread(imagePath)
     (h,w) = image.shape[:2]
     translationMatrix = np.float32([[1,0, random.randint(10,(w//3.3))],[0,1,random.randint(10,(h//2.67))]])
     movedImage = cv2.warpAffine(image, translationMatrix, (image.shape[1],image.shape[0]))
@@ -34,7 +35,9 @@ def translate(image):
     cv2.waitKey(0)
     cv2.destroyAllWindows()
 
-def rotate(image):
+def rotate(dir):
+    imagePath = dir
+    image = cv2.imread(imagePath)
     (h,w) = image.shape[:2]
     center = (h//2, w//2)
     angle = random.randint(-180,180)
@@ -45,7 +48,9 @@ def rotate(image):
     cv2.waitKey(0)
     cv2.destroyAllWindows()
 
-def flip(image):
+def flip(dir):
+    imagePath = dir
+    image = cv2.imread(imagePath)
     choice = random.randint(1,3)
     if choice == 1:
         flippedHorizontally = cv2.flip(image, 1)
@@ -62,9 +67,11 @@ def flip(image):
 
     cv2.destroyAllWindows()
 
-def zoom(img):
+def zoom(dir):
+    imagePath = dir
+    image = cv2.imread(imagePath)
     zoom_factor = random.uniform(1.1,4)
-    Zoomed = cv2.resize(img, None, fx=zoom_factor, fy=zoom_factor)
+    Zoomed = cv2.resize(image, None, fx=zoom_factor, fy=zoom_factor)
     cv2.imshow("Zoomed", Zoomed) 
     cv2.waitKey(-1)
 
