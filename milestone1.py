@@ -70,7 +70,8 @@ def flip(dir):
 def zoom(dir):
     imagePath = dir
     image = cv2.imread(imagePath)
-    zoom_factor = random.uniform(1.1,4)
+    h = image.shape[0]
+    zoom_factor = random.uniform((1080/h),4)
     Zoomed = cv2.resize(image, None, fx=zoom_factor, fy=zoom_factor)
     cv2.imshow("Zoomed", Zoomed) 
     cv2.waitKey(-1)
