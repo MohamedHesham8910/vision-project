@@ -18,33 +18,31 @@ def open_file():
     imgdir = os.path.dirname(image.name)
     dir = image.name
 
-img = Label(main,text="Please Choose an Image")
+img = Label(main,text="Choose an Image", font="Times 15 bold")
 
 img.place(relx=0.5,rely=0.1,anchor=N)
 
-browse = Button(main, text="Browse", command=open_file)
+browse = Button(main, text="Browse",font="Times 12",bd= 4,command=open_file)
 
-browse.place(relx=0.5,rely=0.2,anchor=N)
+browse.place(relx=0.5,rely=0.25,anchor=N)
 
-var = StringVar()
-l = Label(main,textvariable=var)
-var.set("Choose Type of Augmentation to Perform")
-l.place(relx=0.5, rely=0.4, anchor=N)
+l = Label(main,text="Choose Type of Augmentation to Perform",font="Times 15 bold")
+l.place(relx=0.5, rely=0.45, anchor=N)
 
-resizing = Button(main, text="Resize", command= lambda: resize(dir,imgdir))
-resizing.place(relx=0.1, rely=0.55, anchor=N)
+resizing = Button(main, text="Resize",font="Times 12",bd= 4, command= lambda: resize(dir,imgdir))
+resizing.place(relx=0.3, rely=0.6, anchor=N)
 
-trans = Button(main, text="Translate", command= lambda: translate(dir,imgdir))
-trans.place(relx=0.3, rely=0.55, anchor=N)
+trans = Button(main, text="Translate",font="Times 12",bd= 4, command= lambda: translate(dir,imgdir))
+trans.place(relx=0.5, rely=0.6, anchor=N)
 
-rotation = Button(main, text="Rotation", command= lambda: rotate(dir,imgdir))
-rotation.place(relx=0.5, rely=0.55, anchor=N)
+rotation = Button(main, text="Rotation",font="Times 12",bd= 4, command= lambda: rotate(dir,imgdir))
+rotation.place(relx=0.1, rely=0.6, anchor=N)
 
-flipping = Button(main, text="Flip", command= lambda: flip(dir,imgdir))
-flipping.place(relx=0.7, rely=0.55, anchor=N)
+flipping = Button(main, text="Flip",font="Times 12",bd= 4, command= lambda: flip(dir,imgdir))
+flipping.place(relx=0.7, rely=0.6, anchor=N)
 
-zooming = Button(main, text="Zoom", command= lambda: zoom(dir,imgdir))
-zooming.place(relx=0.9, rely=0.55, anchor=N)
+zooming = Button(main, text="Zoom",font="Times 12",bd= 4, command= lambda: zoom(dir,imgdir))
+zooming.place(relx=0.9, rely=0.6, anchor=N)
 
 
 main.mainloop()
