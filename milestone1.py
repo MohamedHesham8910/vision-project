@@ -6,7 +6,23 @@ import os
 
 ####################################################################
 #Functions for Augmentations
-
+    
+def rotate(path,dir,no):
+    num = int(no)
+    plt.close()
+    fig = plt.figure(figsize=(16, 8))
+    imagePath = path
+    image = cv2.imread(imagePath)
+    center = tuple(np.array(image.shape[1::-1]) / 2)
+    os.chdir(dir)
+    for i in range(num):
+        angle = random.randint(-180,180)
+        rotationMatrix = cv2.getRotationMatrix2D(center, angle, 1.0)
+        rotatedImage = cv2.warpAffine(image, rotationMatrix, (image.shape[1],image.shape[0]))
+        cv2.imwrite('New_Image{} .jpg'.format(random.randint(1,1000000000)), rotatedImage)
+        fig.add_subplot(4, (num//4)+1, i+1)
+        plt.imshow(rotatedImage)
+    plt.show()
 
 def resize(path,dir,no):
     num = int(no)
@@ -46,23 +62,6 @@ def translate(path,dir,no):
         cv2.imwrite('New_Image{} .jpg'.format(random.randint(1,1000000000)), movedImage)
         fig.add_subplot(4, (num//4)+1, i+1)
         plt.imshow(movedImage)
-    plt.show()
-    
-def rotate(path,dir,no):
-    num = int(no)
-    plt.close()
-    fig = plt.figure(figsize=(16, 8))
-    imagePath = path
-    image = cv2.imread(imagePath)
-    center = tuple(np.array(image.shape[1::-1]) / 2)
-    os.chdir(dir)
-    for i in range(num):
-        angle = random.randint(-180,180)
-        rotationMatrix = cv2.getRotationMatrix2D(center, angle, 1.0)
-        rotatedImage = cv2.warpAffine(image, rotationMatrix, (image.shape[1],image.shape[0]))
-        cv2.imwrite('New_Image{} .jpg'.format(random.randint(1,1000000000)), rotatedImage)
-        fig.add_subplot(4, (num//4)+1, i+1)
-        plt.imshow(rotatedImage)
     plt.show()
 
 def flip(path,dir,no):

@@ -12,11 +12,11 @@ main.title('Milestone 1')
 main.geometry("500x400")
 
 def open_file():
-    global dir
+    global imgpath
     global imgdir
     image = filedialog.askopenfile(mode='r', filetypes=[('Image Files', ['.jpeg', '.jpg', '.png', '.gif', '.tiff', '.tif', '.bmp', 'svg'])])
     imgdir = os.path.dirname(image.name)
-    dir = image.name
+    imgpath = image.name
 
 def enterNo():
     global num
@@ -42,19 +42,19 @@ enter.place(relx=0.5,rely=0.54,anchor=N)
 l = Label(main,text="Choose Type of Augmentation to Perform",font="Times 15 bold")
 l.place(relx=0.5, rely=0.65, anchor=N)
 
-rotation = Button(main, text="Rotation",font="Times 12",bd= 3, command= lambda: rotate(dir,imgdir,num))
+rotation = Button(main, text="Rotation",font="Times 12",bd= 3, command= lambda: rotate(imgpath,imgdir,num))
 rotation.place(relx=0.1, rely=0.8, anchor=N)
 
-resizing = Button(main, text="Resize",font="Times 12",bd= 3, command= lambda: resize(dir,imgdir,num))
+resizing = Button(main, text="Resize",font="Times 12",bd= 3, command= lambda: resize(imgpath,imgdir,num))
 resizing.place(relx=0.3, rely=0.8, anchor=N)
 
-trans = Button(main, text="Translate",font="Times 12",bd= 3, command= lambda: translate(dir,imgdir,num))
+trans = Button(main, text="Translate",font="Times 12",bd= 3, command= lambda: translate(imgpath,imgdir,num))
 trans.place(relx=0.5, rely=0.8, anchor=N)
 
-flipping = Button(main, text="Flip",font="Times 12",bd= 3, command= lambda: flip(dir,imgdir,num))
+flipping = Button(main, text="Flip",font="Times 12",bd= 3, command= lambda: flip(imgpath,imgdir,num))
 flipping.place(relx=0.7, rely=0.8, anchor=N)
 
-zooming = Button(main, text="Zoom",font="Times 12",bd= 3, command= lambda: zoom(dir,imgdir,num))
+zooming = Button(main, text="Zoom",font="Times 12",bd= 3, command= lambda: zoom(imgpath,imgdir,num))
 zooming.place(relx=0.9, rely=0.8, anchor=N)
 
 
