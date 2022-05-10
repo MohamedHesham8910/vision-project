@@ -14,7 +14,7 @@ main.geometry("500x300")
 def open_file():
     global dir
     global imgdir
-    image = filedialog.askopenfile(mode='r', filetypes=[('Image Files', ['.jpeg', '.jpg', '.png', '.gif', '.tiff', '.tif', '.bmp'])])
+    image = filedialog.askopenfile(mode='r', filetypes=[('Image Files', ['.jpeg', '.jpg', '.png', '.gif', '.tiff', '.tif', '.bmp', 'svg'])])
     imgdir = os.path.dirname(image.name)
     dir = image.name
 
